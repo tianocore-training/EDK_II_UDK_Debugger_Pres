@@ -32,4 +32,4 @@
 # EDK_II_UDK_Debugger_pres
 EDK II Source Level Debugging with the Intel® UEFI Development Kit Debugger (UDK Debugger)
 
-To see the Slides goto https://gitpitch.com/Laurie0131/EDK_II_UDK_Debugger_pres/master#/
+To see the Slides goto https://gitpitch.com/tianocore-training/EDK_II_UDK_Debugger_pres/master#/
