@@ -79,10 +79,14 @@ Note:
 Note:
 
 
----?image=/assets/images/slides/Slide4.JPG
+---?image=/assets/images/slides2/Slide5.JPG
 @title[UDK Debugger tool block diagram]
 
 <p align="center"><span class="gold" ><b>Intel® UEFI Development Kit Debugger Tool</b></span></p>
+
+@snap[south span-95  fragment]
+@box[bg-purple-pp text-white rounded my-box-pad2  ](<p style="line-height:60%"><span style="font-size:0.9em">Source Level Debugger for UEFI<br>&nbsp;</span></p>)
+@snapend
 
 Note:
 
@@ -96,9 +100,16 @@ Note:
 ### Source Level Debugger for UEFI - EDK II
 
 
----?image=/assets/images/slides/Slide6.JPG
+---?image=/assets/images/slides2/Slide6.JPG
 @title[Host & Target Debug Setup]
 <p align="right"><span class="gold" ><b>Host & Target Debug Setup</b></span></p>
+@snap[north span-35  ]
+<br>
+<br>
+<p style="line-height:80%" align="center"><span style="font-size:0.9em">
+Null Modem Cable or<br> USB 2.0 Debug or USB 3.0 Cable
+</span></p>
+@snapend
 
 Note:
 
@@ -127,7 +138,7 @@ Note:
 
 
 
----?image=/assets/images/slides/Slide10.JPG
+---?image=/assets/images/slides2/Slide8.JPG
 @title[Host Configuration Requirements - Windows ]
 <p align="right"><span class="gold" ><b>Host Configuration Requirements </b></span></p>
 <br>
@@ -139,7 +150,7 @@ Note:
   <li><span style="font-size:0.9em" >Debug Tool (WINDBG) x86, version 6.11.0001.404</span></li>
   <li><span style="font-size:0.9em" >Intel UDK Debugger Tool </span></li>
   <li><span style="font-size:0.9em" >WinDBG Extensions in edk2.dll <a href="http://msdl.microsoft.com/download/symbols/debuggers/dbg_x86_6.11.1.404.msi">http://msdl.microsoft.com/ ... /dbg_x86_6.11.1.404.msi </a></span></li><br>
-  <li><span style="font-size:0.5em" >Details on WinDBG - <a href="https://gitpitch.com/tianocore-training/EDK_II_UDK_Debugger_pres/master#/44"> Debugging using WinDBG</a> </span></li>
+  <li><span style="font-size:0.5em" >Details on WinDBG - <a href="https://gitpitch.com/Laurie0131/EDK_II_UDK_Debugger_pres/master#/44"> Debugging using WinDBG</a> </span></li>
   
 </ul>
 
@@ -147,7 +158,7 @@ Note:
 - May need to search for the version of WinDBG
 
 
----?image=/assets/images/slides/Slide11.JPG
+---?image=/assets/images/slides2/Slide9.JPG
 @title[Host Configuration Requirements - Linux ]
 <p align="right"><span class="gold" ><b>Host Configuration Requirements </b></span></p>
 <br>
@@ -168,20 +179,20 @@ Note:
 @title[Host Configuration Requirements - Linux GDB ]
 <p align="right"><span class="gold" ><b>Host Configuration Requirements -GDB </b></span></p>
 <span style="font-size:0.9em" >Check for the configuration of GDB that is installed  </span>
-```
+```bash
 bash$ gdb --configuration
 ```
 
 <div class="left">
 <span style="font-size:0.7em" > Install `gdb` if not installed</span>
-<pre>
+<pre class='bash'>
 ```
 bash$ sudo apt-get update
 bash$ sudo apt-get install gdb
 ```
 </pre>
 <p style="line-height:60%"><span style="font-size:0.6em" > Download `gdb` source and compile with Expat library if there is <font color="yellow"><b>no</b></font> "`--with-expat`" as on the screen shot here</span></p>
-<pre>
+<pre class='bash'>
 ```
 bash$ ./configure --target=x86_64-w64-mingw32 --with-expat
 bash$ make
@@ -217,7 +228,7 @@ Note:
 <br>
 <div class="left1">
 <span style="font-size:0.7em" > Extract the .zip file to a temp directory</span>
-<pre>
+<pre class='bash'>
 ```
 bash$ cd <temp-directory>
 bash$ sudo chmod +x UDK_Debugger_Tool_v1_5_1.bin
@@ -242,7 +253,7 @@ Note:
 <br>
 <div class="left1">
 <span style="font-size:0.7em" > Configure Debug Port Menu</span>
-<pre>
+<pre class='bash'>
 ```
  // Debug Port Channel
    Serial or USB
@@ -264,10 +275,45 @@ Note:
 Note:
 
 
----?image=/assets/images/slides/Slide17.JPG
+---?image=/assets/images/slides2/Slide13.JPG
 @title[Debug Cable Options]
 <p align="right"><span class="gold" ><b>Debug Cable Options</b></span></p>
 
+@snap[north-west span-30  ]
+<br>
+<br>
+
+<p style="line-height:60%" align="left"><span style="font-size:0.7em"><br>
+@size[1.2em](<font color="#A8ff60"><b>Serial Null Modem</b></font>)<br>
+<br><br><br><br><br><br><br>
+&bull;&nbsp;&nbsp;@size[.85em](Target must support standard RS-232 COM port)<br>
+&bull;&nbsp;&nbsp;@size[.85em](Host can support standard RS-232 or USB COM port)<br>
+&bull;&nbsp;&nbsp;@size[.85em](Supported by Windows & Linux)<br>
+</span></p>
+@snapend
+
+@snap[north span-30  fragment]
+<br>
+<br>
+
+<p style="line-height:60%" align="left"><span style="font-size:0.7em"><br>
+@size[1.2em](<font color="#A8ff60"><b>&nbsp;&nbsp;USB 2.0 Debug</b></font>)<br>
+<br><br><br><br><br><br><br>
+&bull;&nbsp;&nbsp;@size[.85em](EHCI debug descriptor &lpar;using NET20DC adapter or AMI Debug Rx device&rpar;)<br>
+&bull;&nbsp;&nbsp;@size[.85em](Target must support USB 2.0 EHCI debug port)<br>
+</span></p>
+@snapend
+
+@snap[north-east span-30 fragment]
+<br>
+<br>
+
+<p style="line-height:60%" align="left"><span style="font-size:0.7em"><br>
+@size[1.2em](<font color="#A8ff60"><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;USB 3.0</b></font>)<br>
+<br><br><br><br><br><br><br>
+&nbsp;&nbsp;&bull;&nbsp;&nbsp;@size[.85em](Added Release 1.5)<br>
+</span></p>
+@snapend
 
 Note:
 
@@ -306,15 +352,103 @@ Note:
 - Add call to new library class (DebugAgentLib) One in SEC, one in DXE Main, one in SMM CPU Module
 - Or if you don’t want to add one A NULL implementation of DebugAgentLib will be checked into open source so all modules can build with debug feature disabled
 
----?image=/assets/images/slides/Slide23.JPG
-<!-- .slide: data-transition="none" -->
+
+---
 @title[Updates to DSC]
 <p align="right"><span class="gold" ><b>Updates to DSC</b></span></p>
 
+@snap[north-west span-100 ]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><br><br><br>&nbsp;</span></p>
+@box[bg-grey-15 text-white rounded my-box-pad2  ](<p style="line-height:60%" align="left"><span style="font-size:0.8em"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;</span></p>)
+@snapend
+
+
+@snap[north-west span-50 ]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><font color="#A8ff60"><br><br>
+<b>Libraries</b><br>
+&nbsp;</font></span></p>
+<p style="line-height:60%" align="left"><span style="font-size:0.460em; font-family:Consolas; " >
+&nbsp;&nbsp;[LibraryClasess]  <font face="Arial"><b>General</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+PeCoffExtraActionLib<br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugCommunicationLib<br>
+<br> 
+<br>
+&nbsp;&nbsp;[LibraryClasses.IA32] <font face="Arial"><b>SEC / PEI</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugAgentLib<br>
+<br>
+&nbsp;&nbsp;[LibraryClasses.X64] <font face="Arial"><b>DXE</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugAgentLib<br>
+<br>
+&nbsp;&nbsp;[LibraryClasses.X64.DXE_SMM_DRIVER] <font face="Arial"><b>SMM</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugAgentLib<br>
+<br>
+</span></p>
+@snapend
+
+
+
+@snap[north-east span-55 ]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><font color="#A8ff60"><br><br>
+<b>`SourceLevelDebugPkg`<br>Lib Instance</b>
+&nbsp;
+</font></span></p>
+<p style="line-height:60%" align="left"><span style="font-size:0.460em; font-family:Consolas; " ><br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;PeCoffExtraActionLibDebug.inf<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DebugCommunicationLibSerialPort.inf <br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <font face="Arial">or</font><br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DebugCommunicationLibUsb.inf<br>
+<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;SecPeiDebugAgentLib.inf<br>
+<br>
+<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DxeDebugAgentLib.inf<br>
+<br>
+<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;SmmDebugAgentLib.inf
+</span></p>
+@snapend
+
+
+@snap[north-east span-60  fragment]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><br><br>
+<br>
+&nbsp;
+</span></p>
+<p style="line-height:30%" align="left"><span style="font-size:0.5em"><br><br><br><br><br><br>
+<br>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<font color="#FF00FF">@size[4.5em](&lbrace;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+@size[4.5em](&rbrace;)
+</font><br>
+<br>
+<br>
+</span></p>
+@snapend
+
+
+@snap[north-east span-65  fragment]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><br><br>
+<br>
+&nbsp;
+</span></p>
+<p style="line-height:60%" align="left"><span style="font-size:0.5em"><br>
+<br><font color="yellow">
+&nbsp;&nbsp;&nbsp;&nbsp;COM1&nbsp;&nbsp;</font><br>
+&nbsp;&nbsp;&nbsp;&nbsp;OR<br><font color="yellow">
+&nbsp;&nbsp;&nbsp;&nbsp;USB&nbsp;&nbsp;<br>
+</font></span></p>
+@snapend
+
 Note:
 
+ 
+
 #### Library class sections
-<pre>
+<pre class='bash'>
  [LibraryClasess]  General
   PeCoffExtraActionLib PeCoffExtraActionLibDebug.inf
 
@@ -334,43 +468,71 @@ Note:
 </pre>
 
 
-+++?image=/assets/images/slides/Slide24.JPG
-<!-- .slide: data-background-transition="none" -->
-<!-- .slide: data-transition="none" -->
-@title[Updates to DSC 02]
-<p align="right"><span class="gold" ><b>Updates to DSC</b></span></p>
 
-Note:
-
-#### Library class sections
-<pre>
- [LibraryClasess]  General
-  PeCoffExtraActionLib PeCoffExtraActionLibDebug.inf
-
- DebugCommunicationLib
-   DebugCommunicationLibSerialPort.inf
-     or
-   DebugCommunicationLibUsb.inf
-
- [LibraryClasses.IA32] SEC/PEI
-  DebugAgentLib SecPeiDebugAgentLib.inf
-
- [LibraryClasses.X64] DXE
-  DebugAgentLib DxeDebugAgentLib.inf
-
- [LibraryClasses.X64.DXE_SMM_DRIVER] SMM
-  DebugAgentLib SmmDebugAgentLib.inf
-</pre>
-
-
----?image=/assets/images/slides/Slide26.JPG
+---
 @title[Updates to DSC USB 3.0]
 <p align="right"><span class="gold" ><b>Updates to DSC for USB 3.0</b></span></p>
+
+@snap[north-west span-100 ]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><br><br><br>&nbsp;</span></p>
+@box[bg-grey-15 text-white rounded my-box-pad2  ](<p style="line-height:60%" align="left"><span style="font-size:0.8em"><br><br><br><br><br><br><br><br><br><br><br><br><br><br>&nbsp;</span></p>)
+@snapend
+
+@snap[north-west span-50 ]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><font color="#A8ff60"><br><br>
+<b>Libraries</b><br>
+&nbsp;</font></span></p>
+<p style="line-height:60%" align="left"><span style="font-size:0.460em; font-family:Consolas; " >
+&nbsp;&nbsp;[LibraryClasess]  <font face="Arial"><b>General</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+PeCoffExtraActionLib<br>&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+&nbsp;&nbsp;[LibraryClasses.IA32] <font face="Arial"><b>SEC / PEI</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugCommunicationLib<br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugAgentLib<br>
+<br>
+&nbsp;&nbsp;[LibraryClasses.X64] <font face="Arial"><b>DXE</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugCommunicationLib<br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugAgentLib<br>
+<br>
+&nbsp;&nbsp;[LibraryClasses.X64.DXE_SMM_DRIVER] <font face="Arial"><b>SMM</b></font><br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugCommunicationLib<br>&nbsp;&nbsp;&nbsp;&nbsp;
+DebugAgentLib<br>
+<br>
+</span></p>
+@snapend
+
+
+
+@snap[north-east span-55 ]
+<p style="line-height:70%" align="center"><span style="font-size:0.8em"><font color="#A8ff60"><br><br>
+<b>`SourceLevelDebugPkg`<br>Lib Instance</b>
+&nbsp;
+</font></span></p>
+<p style="line-height:60%" align="left"><span style="font-size:0.460em; font-family:Consolas; " ><br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;PeCoffExtraActionLibDebug.inf<br>
+<br>
+<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DebugCommunicationLibUsb3Pei.inf<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;SecPeiDebugAgentLib.inf<br>
+<br>
+<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DebugCommunicationLibUsb3Dxe.inf<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DxeDebugAgentLib.inf<br>
+<br>
+<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;DebugCommunicationLibUsb3Dxe.inf<br>
+<font color="#FFC000">@size[1.5em](&#10147;)</font>&nbsp;&nbsp;SmmDebugAgentLib.inf
+</span></p>
+@snapend
+
+
+
+
 
 Note:
 
 #### Library class sections for USB 3.0
-<pre>
+<pre class='bash'>
  [LibraryClasess]  General
   PeCoffExtraActionLib PeCoffExtraActionLibDebug.inf
 
@@ -386,6 +548,8 @@ Note:
   DebugAgentLib SmmDebugAgentLib.inf
   DebugCommunicationLib DebugCommunicationLibUsb3Dxe.inf
 </pre>
+
+
 
 
 ---
@@ -431,7 +595,7 @@ Note:
 <br>
 <div class="left1">
 <span style="font-size:0.7em" > Configure Debug Port Menu</span>
-<pre>
+<pre class='bash'>
 ```
  // Debug Port Channel
    Serial or USB
@@ -490,7 +654,7 @@ Note:
 <div class="left">
 <span style="font-size:0.7em" > Need to open 3 Terminal prompt windows<br>First Terminal(1) is the UDK debugger server </span>
 
-<pre>
+<pre class='bash'>
 ```
  bash$ cd opt/intel/udkdebugger
  bash$ ./bin/udk-gdb-server
@@ -513,14 +677,14 @@ Note:
 <br>
 <div class="left">
 <span style="font-size:0.7em" > Open a second  Terminal(2) for GDB </span>
-<pre>
+<pre class='bash'>
 ```
  bash$ cd opt/intel/udkdebugger
  bash$ gdb
 ```
 </pre>
 <span style="font-size:0.7em" > Attach to the UDK debugger</span>
-<pre>
+<pre class='bash'>
 ```
  (gdb) target remote <HOST>:1234
 ```
@@ -543,7 +707,7 @@ Note:
 <br>
 <div class="left">
 <span style="font-size:0.7em" > Open the udk scripts in  GDB - Terminal(2) </span>
-<pre>
+<pre class='bash'>
 ```
  (gdb) source ./script/udk_gdb_script
 ```
@@ -579,19 +743,19 @@ Note:
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Terminal(2) Breakpoint at PeiDispatcher </span>
-<pre>
+<pre class='bash'>
 ```
  (udb) b PeiDispatcher
 ```
 </pre>
 <span style="font-size:0.7em" > Break at Port 0x80</span>
-<pre>
+<pre class='bash'>
 ```
  (udb)iowatch/b 0x80
 ```
 </pre>
 <span style="font-size:0.7em" > Break at absolute address</span>
-<pre>
+<pre class='bash'>
 ```
  (udb)b *0xfff94a68
 ```
@@ -611,6 +775,8 @@ Note:
 <span style="font-size:0.9em" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
 Note:
+
+
 
 
 ---?image=/assets/images/slides/Slide43.JPG
@@ -653,7 +819,6 @@ Note:
 
 
 ---?image=/assets/images/slides/Slide48.JPG
-<!-- .slide: data-background-transition="none" -->
 @title[Debugging the Boot Phases SEC]
 <p align="center"><span class="gold" ><b>Debugging the Boot Phases - SEC</b></span></p>
 
@@ -667,26 +832,16 @@ Note:
 <span style="font-size:0.8em" ></span>
 </div>
 
+@snap[south-west span-100 fragment ]
+<p style="line-height:70%" align="left"><span style="font-size:0.90em;  " >
+@size[8em](@color[red](X))&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@color[yellow](<b>SORRY</b>) - Requires a hardware debugger
+</span></p>
+<br>
+<br>
+@snapend
 
 Note:
 
-+++?image=/assets/images/slides/Slide49.JPG
-<!-- .slide: data-background-transition="none" -->
-<!-- .slide: data-transition="none" -->
-@title[Debugging the Boot Phases SEC 02]
-<p align="center"><span class="gold" ><b>Debugging the Boot Phases - SEC</b></span></p>
-<div class="left-2">
-<span style="font-size:0.8em" >&nbsp;  </span>
-</div>
-<div class="right-2">
-<span style="font-size:0.8em" >Debugging Sec phase</span>
-<br>
-<br>
-<span style="font-size:0.9em" ><font color="yellow">SORRY</font> - Requires a hardware debugger</span>
-</div>
-
-
-Note:
 
 SEC Must use hardware debugger, not Intel® UEFI Development Kit Debugger
 
@@ -999,7 +1154,7 @@ Note:
 <br>
 <div class="left">
 <span style="font-size:0.7em" >Add SampleApp.inf to the platform .dsc file</span>
-<pre>
+<pre class='bash'>
 ```
 bash$ cd <edk2 workspace directory>
 bash$ . edksetup.sh
@@ -1025,7 +1180,7 @@ Note:
 <br>
 <div class="left">
 <span style="font-size:0.7em" >At the shell prompt on the target invoke SampleApp</span>
-<pre>
+<pre class='bash'>
 ```
 Shell> Fs0:
 FS0:/> SampleApp
@@ -1034,7 +1189,7 @@ FS0:/> SampleApp
 
 <span style="font-size:0.7em" >GDB will break at the CpuBreakpoint</span><br>
 <span style="font-size:0.7em" >Begin debugging SampleApp </span><br>
-<pre>
+<pre class='bash'>
 ```
 (udb) layout src
 (udb) info locals
@@ -1242,12 +1397,59 @@ Note:
 - can only set a breakpoint if current IP is within that module check by stepping...
 
 
----?image=/assets/images/slides/Slide83.JPG
+---?image=/assets/images/slides2/Slide57.JPG
 <!-- .slide: data-transition="none" -->
 @title[Set a Break Point from the Call Stack]
 <br>
 <p align="center"><span class="gold" ><b>Set a Break Point from the Call Stack</b></span></p>
+
+@snap[north-west span-35]
 <br>
+<br>
+<br>
+<br>
+
+<p style="line-height:60%" align="left"><span style="font-size:0.60em; " >
+&bull;&nbsp;Click on desired location in the <br>&nbsp;&nbsp;Call Stack<br>
+&bull;&nbsp;Select w/ Cntl-C (copy)<br>
+&bull;&nbsp;Alt+F9 - Breakpoints menu<br>
+&bull;&nbsp;Add "bp" command <br>
+&bull;&nbsp;And Cntl-v to (paste) from Call <br>&nbsp;&nbsp;Stack reference <br>
+&bull;&nbsp;Click "OK"<br>
+</span></p>
+@snapend
+
+@snap[north-west span-30 fragment]
+<br>
+<br>
+<br>
+<br>
+<p style="line-height:60%" align="left"><span style="font-size:0.60em; " >
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br><br><br>
+&bull;&nbsp;Press "F5" to GO
+</span></p>
+@snapend
+
+@snap[north-east span-55 fragment]
+<br>
+<br>
+<br>
+<br>
+<br>
+<p style="line-height:30%" align="left"><span style="font-size:0.60em; " >
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br><br><br><br><br><br>
+<font color="black">@size[.55em](<b>`0 e fffd2459 [l:\lr\mdemodulekg\core\pei\dispatcher\dispatch `</b>)</font><br>
+<br>
+</span></p>
+@snapend
 
 Note:
 
@@ -1259,23 +1461,6 @@ Note:
 7. Press “F5” to Go
 
 
-
-+++?image=/assets/images/slides/Slide84.JPG
-<!-- .slide: data-background-transition="none" -->
-<!-- .slide: data-transition="none" -->
-@title[Set a Break Point from the Call Stack]
-<br>
-<p align="center"><span class="gold" ><b>Set a Break Point from the Call Stack</b></span></p>
-<br>
-
-Note:
-
-1. Click on desired location in the Call Stack
-2. Select w/ Cntl-C (copy)
-3. Alt+F9 – Breakpoints menu
-4. Add “bp” command  and Cntl-v to (paste) from Call Stack reference 
-6. Click “OK” 	
-7. Press “F5” to Go
 
 
 ---?image=/assets/images/slides/Slide86.JPG
